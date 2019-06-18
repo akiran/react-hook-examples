@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 
 export default function Counter() {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(() => {
+    return parseInt(localStorage.getItem("count") || 0, 10);
+  });
 
   useEffect(() => {
     localStorage.setItem("count", count);
@@ -9,7 +11,7 @@ export default function Counter() {
 
   return (
     <div>
-      Stored Current count is {count}
+      <h3>Stored Current count is {count}</h3>
       <button onClick={() => setCount(count + 1)}>Increment</button>
     </div>
   );

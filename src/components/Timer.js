@@ -4,9 +4,9 @@ export default function Timer() {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => setCount(c => c + 1), 1000);
-    return () => clearInterval(interval);
+    let id = setInterval(() => setCount(c => c + 1), 1000);
+    return () => clearInterval(id);
   }, []);
 
-  return <div>Timer: {count}</div>;
+  return <h1>Timer: {count}</h1>;
 }
